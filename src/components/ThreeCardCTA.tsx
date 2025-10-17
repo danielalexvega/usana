@@ -2,12 +2,13 @@ import { FC } from "react";
 import { ThreeCardCTA, CTACard } from "../model";
 import CTACardComponent from "./CtaCard";
 import { createItemSmartLink, createElementSmartLink } from "../utils/smartlink";
+import { IContentItem } from "@kontent-ai/delivery-sdk";
 
 type ThreeCardCTAProps = {
   data: ThreeCardCTA;
   componentId: string;
   componentName: string;
-  richTextLinkedItems?: any[];
+  richTextLinkedItems?: IContentItem[];
 };
 
 const ThreeCardCTAComponent: FC<ThreeCardCTAProps> = ({ data, componentId, componentName, richTextLinkedItems }) => {
