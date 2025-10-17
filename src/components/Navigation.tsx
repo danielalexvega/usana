@@ -29,7 +29,7 @@ const Navigation: FC = () => {
             .collections([collectionFilter as CollectionCodenames])
             .toPromise()
             .then(res => res.data.items[0]?.elements.subpages.linkedItems.map(subpage => ({
-              name: subpage.elements.headline.value,
+              name: subpage.system.name,
               link: subpage.elements.url.value,
             })))
             .catch((err) => {
@@ -42,9 +42,11 @@ const Navigation: FC = () => {
     ],
   });
 
+  console.log(navigation.data);
+  
   const createMenuLink = (name: string, link: string) => (
     <li key={name}>
-      <NavLink to={createPreviewLink(link, isPreview)} className="text-xl leading-5 text-gray w-fit block hover:text-burgundy">{name}</NavLink>
+      <NavLink to={createPreviewLink(link, isPreview)} className="text-xl leading-5 text-white w-fit block">{name}</NavLink>
     </li>
   );
 

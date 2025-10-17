@@ -56,7 +56,7 @@ const FeaturedContent: FC<FeaturedContentProps> = ({ featuredContent, parentId }
               imageSrc={item.elements.image.value[0]?.url}
               imageAlt={item.elements.image.value[0]?.description ?? "alt"}
               imagePosition={item.elements.image_position.value[0]?.codename ?? "left"}
-              style="burgundy"
+              style="white"
               componentId={item.system.id}
               componentName={item.system.name}
             />

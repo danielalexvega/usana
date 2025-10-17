@@ -10,6 +10,9 @@ export default {
       colors: {
         burgundy: "#993265",
         azure: "#009edb",
+        usanaBlue: "#334bd7",
+        usanaGrey: "#353535",
+        usanaLightGrey: "#F4F4F4",
         white: '#ffffff',
         grey: {
           light: "#8e8e8e",
@@ -58,8 +61,9 @@ export default {
 
     },
       fontFamily: {
-        sans: ['"Source Sans 3"', 'Arial', 'sans-serif'],
-        libre: ['"Abhaya Libre"', "Arial"]
+        sans: ['"Noto Sans"', 'Arial', 'sans-serif'],
+        libre: ['"Noto Sans"', 'Arial', 'sans-serif'],
+        noto: ['"Noto Sans"', 'Arial', 'sans-serif']
       }
     },
     container: {

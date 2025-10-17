@@ -2,12 +2,15 @@ import { Elements } from "@kontent-ai/delivery-sdk";
 import { FC } from "react";
 import ButtonLink from "./ButtonLink";
 import { createElementSmartLink, createItemSmartLink } from "../utils/smartlink";
+import { Page } from "../model";
 
 type HeroImageProps = Readonly<{
   data: {
     headline?: Elements.TextElement;
     subheadline?: Elements.TextElement;
     heroImage?: Elements.AssetsElement;
+    buttonText?: Elements.TextElement;
+    heroLink?: Elements.LinkedItemsElement<Page>;
     itemId?: string;
   };
   buttonLink?: string;
@@ -15,51 +18,55 @@ type HeroImageProps = Readonly<{
 }>;
 
 const HeroImage: FC<HeroImageProps> = ({ data, buttonLink }) => {
+  const heroImageUrl = data.heroImage?.value[0]?.url;
+  
   return (
-    <div className="burgundy-theme flex flex-col py-10 lg:py-0 lg:flex-row lg:gap-32">
-      <div className="lg:basis-1/2 pt-10 lg:pt-[104px] pb-10 lg:pb-[160px] flex flex-col items-center lg:items-start gap-10">
-        <h1 className="text-center lg:text-left font-libre text-[64px] md:text-[94px] text-heading-1-color font-bold leading-[64px] md:leading-[78px]"
+    <div 
+      className="relative w-full bg-white"
+      style={{
+        backgroundImage: heroImageUrl ? `url(${heroImageUrl}?auto=format&w=1200)` : 'none',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center right',
+        backgroundRepeat: 'no-repeat',
+        maxHeight: '544px',
+        minHeight: '544px'
+      }}
+    >
+      {/* Content Container */}
+      <div className="relative z-10 flex items-center h-full max-w-7xl mx-auto px-6">
+        <div className="w-full lg:w-1/2 flex flex-col gap-6 mt-[100px]">
+          <h1 
+            className="font-noto text-[48px] font-normal leading-tight"
+            style={{ color: 'rgb(51,75,215)' }}
+            {...createItemSmartLink(data.itemId)}
+            {...createElementSmartLink("headline")}
+          >
+            {data.headline?.value}
+          </h1>
+          <p 
+            className="font-noto text-[20px] font-normal leading-[30px] text-gray-800"
+            {...createItemSmartLink(data.itemId)}
+            {...createElementSmartLink("subheadline")}
+          >
+            {data.subheadline?.value}
+          </p>
+          {(buttonLink != "nolink" || data.buttonText?.value) && (
+            <div className="mt-4">
+              <ButtonLink 
+                href={buttonLink ?? (data.heroLink?.linkedItems?.[0]?.elements?.url?.value) ?? "services"}
+              >
+                <p>{data.buttonText?.value || "Shop Products"}</p>
+              </ButtonLink>
+            </div>
+          )}
+        </div>
+        <div 
+          className="hidden lg:block lg:w-1/2"
           {...createItemSmartLink(data.itemId)}
-          {...createElementSmartLink("headline")}
+          {...createElementSmartLink("hero_image")}
         >
-          {data.headline?.value}
-        </h1>
-        <p className="text-center lg:text-left font-sans text-xl text-body-color"
-          {...createItemSmartLink(data.itemId)}
-          {...createElementSmartLink("subheadline")}
-        >{data.subheadline?.value}</p>
-        {buttonLink != "nolink" && (
-          <ButtonLink href={buttonLink ?? "services"}>
-            <p>Explore our services</p>
-          </ButtonLink>
-        )}
-      </div>
-      <div className="lg:basis-1/2"
-        {...createItemSmartLink(data.itemId)}
-        {...createElementSmartLink("hero_image")}
-      >
-        {data.heroImage?.value[0]
-          ? (
-            data.heroImage.value[0].type?.startsWith('image') ? (
-              <img
-                className="object-cover h-full mx-auto"
-                width={660}
-                height={770}
-                src={`${data.heroImage.value[0].url}?auto=format&w=800`}
-                alt={data.heroImage.value[0].description ?? "image-alt"}
-              />
-            ) : (
-              <video
-                src={data.heroImage.value[0].url}
-                autoPlay={true}
-                loop={true}
-                muted={true}
-                width={660}
-                height={770}    
-                className="object-cover h-full mx-auto"
-              />
-            )
-          ) : <></>}
+          {/* This div is intentionally empty - the background image handles the visual */}
+        </div>
       </div>
     </div>
   );

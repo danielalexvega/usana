@@ -2,7 +2,7 @@ import { DeliveryError } from "@kontent-ai/delivery-sdk";
 
 import HeroImage from "../components/HeroImage";
 import PageContent from "../components/PageContent";
-import PageSection from "../components/PageSection";
+// import PageSection from "../components/PageSection";
 import "../index.css";
 import { LanguageCodenames, type Page } from "../model";
 import { createClient } from "../utils/client";
@@ -44,6 +44,7 @@ const usePage = (isPreview: boolean, lang: string | null, slug: string | null) =
       .limitParameter(1)
       .equalsFilter("elements.url", slug ?? "")
       .languageParameter((lang ?? "default") as LanguageCodenames)
+      .depthParameter(4)
       .toPromise()
       .then(res => {
         const item = res.data.items[0] as Replace<Page, { elements: Partial<Page["elements"]> }> | undefined;
@@ -87,6 +88,7 @@ const Page: FC = () => {
             .limitParameter(1)
             .equalsFilter("elements.url", slug ?? "")
             .languageParameter((lang ?? "default") as LanguageCodenames)
+            .depthParameter(4)
             .toPromise()
             .then(res =>
               res.data.items[0] as Replace<Page, { elements: Partial<Page["elements"]> }> ?? null
@@ -122,7 +124,7 @@ const Page: FC = () => {
     <div className="flex-grow">
       {
         page.elements.headline?.value && (
-          <PageSection color="bg-burgundy">
+   
             <HeroImage
               data={{
                 headline: page.elements.headline,
@@ -132,12 +134,12 @@ const Page: FC = () => {
               }}
               buttonLink="nolink"
             />
-          </PageSection>
+
         )
       }
-      <PageSection color="bg-white">
+
         <PageContent body={page.elements.body!} itemId={page.system.id} elementName="body" />
-      </PageSection>
+  
     </div>
   );
 };

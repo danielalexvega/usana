@@ -6,16 +6,17 @@
 *  
 * -------------------------------------------------------------------------------
 * 
-* Project: Karma Health Demo
+* Project: 💊 USANA
 * Environment: Production
-* Id: d89e24b9-c2c4-0153-3e3b-8d8abd406750
+* Id: f8fe0228-0413-0023-9e3f-133ff815f2e3
 * 
 * -------------------------------------------------------------------------------
 **/
 
 import type { Elements } from "@kontent-ai/delivery-sdk";
 import type { CoreContentType } from "../system/index.ts";
-import type { Video, Disclaimer, CallToAction, Event, Article, Page } from "./index.ts";
+import type { Metadata } from "../content-type-snippets/index.ts";
+import type { Video, Disclaimer, CTA, Event, Article, Page } from "./index.ts";
 
 /**
  * Landing Page
@@ -61,7 +62,7 @@ export type LandingPage = CoreContentType<
      * Codename: body_copy
      * Id: 7b9826ff-5cb0-450f-b16a-bd176aed04cf
      */
-    readonly body_copy: Elements.RichTextElement<Video | Disclaimer | CallToAction>;
+    readonly body_copy: Elements.RichTextElement<Video | Disclaimer | CTA>;
     /**
      * Featured Content
      *
@@ -70,7 +71,25 @@ export type LandingPage = CoreContentType<
      * Codename: featured_content
      * Id: 38cf004b-3054-43ff-9b7a-f0734b1d35f1
      */
-    readonly featured_content: Elements.LinkedItemsElement<Event | Article | CallToAction>;
+    readonly featured_content: Elements.LinkedItemsElement<Event | Article | CTA>;
+    /**
+     * Button Text
+     *
+     * Type: text
+     * Required: false
+     * Codename: button_text
+     * Id: fae1179a-4e1e-45e5-85c4-253d47bbfd80
+     */
+    readonly button_text: Elements.TextElement;
+    /**
+     * Hero Link
+     *
+     * Type: modular_content
+     * Required: false
+     * Codename: hero_link
+     * Id: e6a8ed4a-5c19-475b-aae8-d22251e16a32
+     */
+    readonly hero_link: Elements.LinkedItemsElement<Page>;
     /**
      * Subpages
      *
@@ -80,7 +99,7 @@ export type LandingPage = CoreContentType<
      * Id: 9d5080db-f2bb-41a1-bcbe-11786ee3a59d
      */
     readonly subpages: Elements.LinkedItemsElement<Page>;
-  },
+  } & Metadata,
   "landing_page"
 >;
 
@@ -93,7 +112,12 @@ export type LandingPageElementCodenames =
   | "hero_image"
   | "body_copy"
   | "featured_content"
-  | "subpages";
+  | "button_text"
+  | "hero_link"
+  | "subpages"
+  | "metadata__title"
+  | "metadata__keywords"
+  | "metadata__description";
 
 /**
  * Type guard for Landing Page

@@ -6,9 +6,9 @@
 *  
 * -------------------------------------------------------------------------------
 * 
-* Project: Karma Health Demo
+* Project: 💊 USANA
 * Environment: Production
-* Id: d89e24b9-c2c4-0153-3e3b-8d8abd406750
+* Id: f8fe0228-0413-0023-9e3f-133ff815f2e3
 * 
 * -------------------------------------------------------------------------------
 **/
@@ -25,23 +25,37 @@ export type ContentTypeCodenames =
   | "article"
   | "blog_post"
   | "call_to_action"
+  | "cta_card"
   | "disclaimer"
   | "event"
+  | "faq_section"
+  | "infograph_section"
+  | "infograph"
   | "landing_page"
   | "page"
   | "person"
+  | "question___answer"
   | "service"
+  | "testimonial"
+  | "three_card_cta"
   | "video";
 
 /**
  * Type representing all collections
  */
-export type CollectionCodenames = "default";
+export type CollectionCodenames =
+  | "academic_content"
+  | "default"
+  | "ecommerce"
+  | "hub"
+  | "operations"
+  | "patient_resources"
+  | "website";
 
 /**
  * Type representing all workflows
  */
-export type WorkflowCodenames = "default";
+export type WorkflowCodenames = "academic_resources" | "biographies" | "default" | "patient_resources";
 
 /**
  * Type representing all taxonomies
@@ -56,12 +70,29 @@ export type TaxonomyCodenames =
 /**
  * Type representing all worksflow steps across all workflows
  */
-export type WorkflowStepCodenames = "archived" | "draft" | "published" | "scheduled";
+export type WorkflowStepCodenames =
+  | "archived"
+  | "copy_review"
+  | "draft_97d445e"
+  | "draft_a8b162c"
+  | "draft_b242d4d"
+  | "draft"
+  | "legal_review"
+  | "marketing_review"
+  | "medical_review"
+  | "peer_review"
+  | "published"
+  | "reviewed_1778942"
+  | "reviewed"
+  | "scheduled"
+  | "staff_member_review"
+  | "translation";
 
 /**
  * Type representing all element codenames across all content types
  */
 export type ElementCodenames =
+  | "answer"
   | "article_type"
   | "author"
   | "autoplay"
@@ -70,7 +101,9 @@ export type ElementCodenames =
   | "body"
   | "button_label"
   | "button_link"
+  | "button_text"
   | "caption"
+  | "card_ctas"
   | "description"
   | "email"
   | "end_date"
@@ -79,10 +112,14 @@ export type ElementCodenames =
   | "featured_content"
   | "first_name"
   | "guidelines"
+  | "header"
+  | "heading"
   | "headline"
   | "hero_image"
+  | "hero_link"
   | "image_position"
   | "image"
+  | "infographics"
   | "introduction"
   | "job_title"
   | "last_name"
@@ -95,8 +132,13 @@ export type ElementCodenames =
   | "phone"
   | "prefix"
   | "publish_date"
+  | "question_and_answers"
+  | "question"
+  | "quote"
   | "related_articles"
+  | "role"
   | "start_date"
+  | "style"
   | "subheadline"
   | "subpages"
   | "suffixes"

@@ -6,9 +6,9 @@
 *  
 * -------------------------------------------------------------------------------
 * 
-* Project: Karma Health Demo
+* Project: 💊 USANA
 * Environment: Production
-* Id: d89e24b9-c2c4-0153-3e3b-8d8abd406750
+* Id: f8fe0228-0413-0023-9e3f-133ff815f2e3
 * 
 * -------------------------------------------------------------------------------
 **/
@@ -16,10 +16,17 @@
 export * from "./article.ts";
 export * from "./blogPost.ts";
 export * from "./callToAction.ts";
+export * from "./ctaCard.ts";
 export * from "./disclaimer.ts";
 export * from "./event.ts";
+export * from "./faqSection.ts";
+export * from "./infograph.ts";
+export * from "./infographSection.ts";
 export * from "./landingPage.ts";
 export * from "./page.ts";
 export * from "./person.ts";
+export * from "./questionAnswer.ts";
 export * from "./service.ts";
+export * from "./testimonial.ts";
+export * from "./threeCardCta.ts";
 export * from "./video.ts";

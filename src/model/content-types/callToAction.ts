@@ -6,9 +6,9 @@
 *  
 * -------------------------------------------------------------------------------
 * 
-* Project: Karma Health Demo
+* Project: 💊 USANA
 * Environment: Production
-* Id: d89e24b9-c2c4-0153-3e3b-8d8abd406750
+* Id: f8fe0228-0413-0023-9e3f-133ff815f2e3
 * 
 * -------------------------------------------------------------------------------
 **/
@@ -18,13 +18,13 @@ import type { CoreContentType } from "../system/index.ts";
 import type { Page } from "./index.ts";
 
 /**
- * Call to action
+ * CTA
  *
  * Id: a9196b8d-6320-4feb-aa25-14637761dcc6
  * Codename: call_to_action
  */
-export type CallToAction = CoreContentType<
-  CallToActionElementCodenames,
+export type CTA = CoreContentType<
+  CTAElementCodenames,
   {
     /**
      * Headline
@@ -66,7 +66,7 @@ export type CallToAction = CoreContentType<
      * Button Label
      *
      * Type: text
-     * Required: true
+     * Required: false
      * Codename: button_label
      * Id: ca581835-4337-4add-bdd3-aa466c685514
      */
@@ -75,32 +75,42 @@ export type CallToAction = CoreContentType<
      * Button Link
      *
      * Type: modular_content
-     * Required: true
+     * Required: false
      * Codename: button_link
      * Id: 1872121b-6166-451e-8c26-9c78f2cfba47
      */
     readonly button_link: Elements.LinkedItemsElement<Page>;
+    /**
+     * Style
+     *
+     * Type: multiple_choice
+     * Required: true
+     * Codename: style
+     * Id: 5578cd2d-b2dd-48eb-9d36-bd14e0b19513
+     */
+    readonly style: Elements.MultipleChoiceElement<"white" | "lavender" | "grey">;
   },
   "call_to_action"
 >;
 
 /**
- * Type representing all available element codenames for Call to action
+ * Type representing all available element codenames for CTA
  */
-export type CallToActionElementCodenames =
+export type CTAElementCodenames =
   | "headline"
   | "subheadline"
   | "image"
   | "image_position"
   | "button_label"
-  | "button_link";
+  | "button_link"
+  | "style";
 
 /**
- * Type guard for Call to action
+ * Type guard for CTA
  *
  * Id: a9196b8d-6320-4feb-aa25-14637761dcc6
  * Codename: call_to_action
  */
-export function isCallToAction(item: CoreContentType | undefined | null): item is CallToAction {
+export function isCTA(item: CoreContentType | undefined | null): item is CTA {
   return item?.system?.type === "call_to_action";
 }

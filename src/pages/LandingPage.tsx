@@ -121,16 +121,16 @@ const LandingPage: FC = () => {
 
   return (
     <div className="flex-grow">
-      <PageSection color="bg-burgundy">
         <HeroImage
           data={{
             headline: landingPage.elements.headline,
             subheadline: landingPage.elements.subheadline,
             heroImage: landingPage.elements.hero_image,
+            buttonText: landingPage.elements.button_text,
+            heroLink: landingPage.elements.hero_link,
             itemId: landingPage.system.id
           }}
         />
-      </PageSection>
       <PageSection color="bg-white">
         <PageContent body={landingPage.elements.body_copy!} itemId={landingPage.system.id} elementName="body_copy" />
       </PageSection>

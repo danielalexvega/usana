@@ -1,11 +1,12 @@
 import { FC } from "react";
-import { CallToAction, Disclaimer, Video } from "../model";
+import { CTA, Disclaimer, Video, ThreeCardCTA } from "../model";
 import { transformToPortableText } from "@kontent-ai/rich-text-resolver";
 import { defaultPortableRichTextResolvers } from "../utils/richtext";
 import { PortableText, PortableTextReactResolvers } from "@kontent-ai/rich-text-resolver/utils/react";
 import PromotionalDisclaimer from "./disclaimer/PromotionalDisclaimer";
 import InformationalDisclaimer from "./disclaimer/InformationalDisclaimer";
 import CallToActionComponent from "./CallToAction";
+import ThreeCardCTAComponent from "./ThreeCardCTA";
 import { createElementSmartLink, createFixedAddSmartLink, createItemSmartLink } from "../utils/smartlink";
 import { Elements, IContentItem } from "@kontent-ai/delivery-sdk";
 import VideoComponent from "./Video";
@@ -20,7 +21,7 @@ const PageContent: FC<PageContentProps> = ({ body, itemId, elementName }) => {
   const value = !body || !body.value ? "<p><br/></p>" : body.value;
   const portableText = transformToPortableText(value);
   return (
-    <div className="pt-10 pb-20 flex flex-col"
+    <div className="pb-20 flex flex-col"
       {...createItemSmartLink(itemId)}
       {...createElementSmartLink(
         elementName
@@ -52,7 +53,7 @@ const createPortableTextComponents = (
             ? <PromotionalDisclaimer title={disclaimerItem.elements.headline.value} text={disclaimerItem.elements.subheadline.value} componentId={item.system.id} componentName={item.system.name} />
             : <InformationalDisclaimer title={disclaimerItem.elements.headline.value} text={disclaimerItem.elements.subheadline.value} componentId={item.system.id} componentName={item.system.name} />;
         case "call_to_action":
-          const cta = item as CallToAction;
+          const cta = item as CTA;
           return (
             <CallToActionComponent
               title={cta.elements.headline.value}
@@ -64,6 +65,17 @@ const createPortableTextComponents = (
               imagePosition={cta.elements.image_position.value[0]?.codename ?? "left"}
               componentId={cta.system.id}
               componentName={cta.system.name}
+              style={cta.elements.style.value[0]?.codename ?? "white"}
+            />
+          );
+        case "three_card_cta":
+          const threeCardCta = item as ThreeCardCTA;
+          return (
+            <ThreeCardCTAComponent
+              data={threeCardCta}
+              componentId={threeCardCta.system.id}
+              componentName={threeCardCta.system.name}
+              richTextLinkedItems={element.linkedItems}
             />
           );
         default:

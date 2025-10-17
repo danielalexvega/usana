@@ -10,7 +10,7 @@ type CallToActionProps = Readonly<{
   imageSrc?: string;
   imageAlt: string;
   imagePosition?: "left" | "right" | "center";
-  style?: "burgundy" | "default";
+  style?: "white" | "lavender" | "grey";
   componentId: string;
   componentName: string;
 }>;
@@ -23,7 +23,7 @@ const CallToActionComponent: React.FC<CallToActionProps> = ({
   imageSrc,
   imageAlt,
   imagePosition = "left",
-  style = "default",
+  style = "white",
   componentId,
   componentName,
 }) => {
@@ -36,9 +36,21 @@ const CallToActionComponent: React.FC<CallToActionProps> = ({
     return "";
   };
 
+  const getStyleClasses = (style: "white" | "lavender" | "grey") => {
+    switch (style) {
+      case "lavender":
+        return "bg-usanaBlue";
+      case "grey":
+        return "bg-usanaLightGrey";
+      case "white":
+      default:
+        return "bg-white";
+    }
+  };
+
   return (
     <div
-      className={`${style === "burgundy" ? "burgundy-theme" : ""} w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-4 lg:px-8 xl:px-16`}
+      className={`${getStyleClasses(style)} w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-4 lg:px-8 xl:px-16`}
       {...createItemSmartLink(componentId, componentName)}
     >
       <div className="max-w-7xl mx-auto">
@@ -57,25 +69,27 @@ const CallToActionComponent: React.FC<CallToActionProps> = ({
           </div>
 
           <div className={`flex lg:flex-1 flex-col gap-5 ${imagePosition === "center" ? "items-center" : ""}`}>
-            <h2 className={`flex w-fit text-6xl font-bold text-heading-2-color`}
+            <h2 className={`flex w-fit text-heading-2-color text-[32px]`}
               {...createElementSmartLink("headline")}
             >
               {title}
             </h2>
 
-            <p className={`flex text-xl text-body-color line-clamp-5`}
+            <p className={`flex text-base text-body-color line-clamp-5`}
               {...createElementSmartLink("subheadline")}
             >
               {description}
             </p>
 
-            <div className="flex pt-5">
-              <ButtonLink
-                href={buttonHref}
-              >
-                {buttonText}
-              </ButtonLink>
-            </div>
+            {buttonText &&  (
+              <div className="flex pt-5">
+                <ButtonLink
+                  href={buttonHref}
+                >
+                  {buttonText}
+                </ButtonLink>
+              </div>
+            )}
           </div>
         </div>
       </div>

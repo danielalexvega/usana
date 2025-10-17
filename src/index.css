@@ -14,30 +14,32 @@ h1, h2, h3 {
   --color-grey-light: #8e8e8e;
   --color-grey-dark: #1D1D1B;
   --color-creme: #fff7e7;
+  --color-usanaBlue: #334bd7;
+  --color-usanaGrey: #353535;
 
-  --color-primary: var(--color-burgundy); 
+  --color-primary: var(--color-usanaBlue); 
   --color-secondary: var(--color-creme);
-  --color-ternary: var(--color-azure);
+  --color-ternary: var(--color-usanaBlue);
 
   --color-background: var(--color--white);
 
-  --color-heading-1: var(--color-burgundy);
-  --color-heading-2: var(--color-azure);
-  --color-heading-3: var(--color-azure);
-  --color-heading-4: var(--color-azure);
+  --color-heading-1: var(--color-usanaBlue);
+  --color-heading-2: var(--color-usanaBlue);
+  --color-heading-3: var(--color-usanaBlue);
+  --color-heading-4: var(--color-usanaBlue);
 
   --color-body-large: var(--color-grey);
   --color-body: var(--color-grey);
   --color-small: var(--color-grey);
 
-  --color-border: var(--color-burgundy);
-  --color-link: var(--color-burgundy);
-  --color-link-hover: var(--color-azure);
+  --color-border: var(--color-usanaBlue);
+  --color-link: var(--color-usanaBlue);
+  --color-link-hover: var(--color-usanaBlue);
 
   --color-button-background: transparent;
-  --color-button-background-hover: var(--color-burgundy);
-  --color-button-border: var(--color-burgundy);
-  --color-button-border-hover: var(--color-burgundy);
+  --color-button-background-hover: var(--color-usanaBlue);
+  --color-button-border: var(--color-usanaBlue);
+  --color-button-border-hover: var(--color-usanaBlue);
   --color-button-text: #000000;
   --color-button-text-hover: var(--color-white);
 
@@ -61,7 +63,7 @@ h1, h2, h3 {
 }
 
 .burgundy-theme {
-    --color-background: var(--color-burgundy);
+    --color-background: var(--color-usanaBlue);
     --color-heading-1: var(--color-creme);
     --color-heading-2: var(--color-creme);
     --color-heading-3: var(--color-creme);
@@ -87,18 +89,18 @@ h1, h2, h3 {
 
 .creme-theme {
   --color-primary: var(--color-creme);     
-  --color-secondary: var(--color-burgundy);
-  --color-heading-1: var(--color-burgundy);
-  --color-heading-2: var(--color-burgundy);
-  --color-heading-3: var(--color-burgundy);
+  --color-secondary: var(--color-usanaBlue);
+  --color-heading-1: var(--color-usanaBlue);
+  --color-heading-2: var(--color-usanaBlue);
+  --color-heading-3: var(--color-usanaBlue);
   --color-text: var(--color-gray);
 }
 
 .button-azure {
   --color-button-background: var(--color-azure);
-  --color-button-background-hover: var(--color-burgundy);
+  --color-button-background-hover: var(--color-usanaBlue);
   --color-button-border: var(--color-azure);
-  --color-button-border-hover: var(--color-burgundy);
+  --color-button-border-hover: var(--color-usanaBlue);
   --color-button-text: var(--color-white);
   --color-button-text-hover: var(--color-white);
 }
