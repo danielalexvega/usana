@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { CTA, Disclaimer, Video, ThreeCardCTA } from "../model";
+import { CTA, Disclaimer, Video, ThreeCardCTA, Testimonial, TestimonialSection } from "../model";
 import { transformToPortableText } from "@kontent-ai/rich-text-resolver";
 import { defaultPortableRichTextResolvers } from "../utils/richtext";
 import { PortableText, PortableTextReactResolvers } from "@kontent-ai/rich-text-resolver/utils/react";
@@ -7,6 +7,8 @@ import PromotionalDisclaimer from "./disclaimer/PromotionalDisclaimer";
 import InformationalDisclaimer from "./disclaimer/InformationalDisclaimer";
 import CallToActionComponent from "./CallToAction";
 import ThreeCardCTAComponent from "./ThreeCardCTA";
+import TestimonialComponent from "./Testimonial";
+import TestimonialSectionComponent from "./TestimonialSection";
 import { createElementSmartLink, createFixedAddSmartLink, createItemSmartLink } from "../utils/smartlink";
 import { Elements, IContentItem } from "@kontent-ai/delivery-sdk";
 import VideoComponent from "./Video";
@@ -77,6 +79,30 @@ const createPortableTextComponents = (
               data={threeCardCta}
               componentId={threeCardCta.system.id}
               componentName={threeCardCta.system.name}
+              richTextLinkedItems={element.linkedItems}
+            />
+          );
+        }
+        case "testimonial": {
+          const testimonial = item as Testimonial;
+          return (
+            <TestimonialComponent
+              quote={testimonial.elements.quote}
+              name={testimonial.elements.name}
+              role={testimonial.elements.role}
+              image={testimonial.elements.image}
+              componentId={testimonial.system.id}
+              componentName={testimonial.system.name}
+            />
+          );
+        }
+        case "testimonial_section": {
+          const testimonialSection = item as TestimonialSection;
+          return (
+            <TestimonialSectionComponent
+              data={testimonialSection}
+              componentId={testimonialSection.system.id}
+              componentName={testimonialSection.system.name}
               richTextLinkedItems={element.linkedItems}
             />
           );

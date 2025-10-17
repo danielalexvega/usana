@@ -36,6 +36,7 @@ export type ContentTypeCodenames =
   | "person"
   | "question___answer"
   | "service"
+  | "testimonial_section"
   | "testimonial"
   | "three_card_cta"
   | "video";
@@ -96,6 +97,7 @@ export type ElementCodenames =
   | "article_type"
   | "author"
   | "autoplay"
+  | "background_image"
   | "biography"
   | "body_copy"
   | "body"
@@ -144,6 +146,7 @@ export type ElementCodenames =
   | "suffixes"
   | "summary"
   | "team"
+  | "testimonials"
   | "title"
   | "topics"
   | "type"

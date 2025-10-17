@@ -28,5 +28,6 @@ export * from "./person.ts";
 export * from "./questionAnswer.ts";
 export * from "./service.ts";
 export * from "./testimonial.ts";
+export * from "./testimonialSection.ts";
 export * from "./threeCardCta.ts";
 export * from "./video.ts";

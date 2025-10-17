@@ -16,7 +16,15 @@
 import type { Elements } from "@kontent-ai/delivery-sdk";
 import type { CoreContentType } from "../system/index.ts";
 import type { Metadata } from "../content-type-snippets/index.ts";
-import type { Video, Disclaimer, CTA, FAQSection, InfographSection, ThreeCardCTA } from "./index.ts";
+import type {
+  Video,
+  Disclaimer,
+  CTA,
+  FAQSection,
+  InfographSection,
+  ThreeCardCTA,
+  TestimonialSection,
+} from "./index.ts";
 
 /**
  * Page
@@ -62,7 +70,9 @@ export type Page = CoreContentType<
      * Codename: body
      * Id: c5ac868e-97fe-419a-a256-635af1fb70aa
      */
-    readonly body: Elements.RichTextElement<Video | Disclaimer | CTA | FAQSection | InfographSection | ThreeCardCTA>;
+    readonly body: Elements.RichTextElement<
+      Video | Disclaimer | CTA | FAQSection | InfographSection | ThreeCardCTA | TestimonialSection
+    >;
     /**
      * URL
      *
